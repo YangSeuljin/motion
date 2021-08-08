@@ -1,5 +1,5 @@
 import { Component } from "./components/component.js";
-import { Composable, PageComponent } from "./components/page.js";
+import { Composable, PageComponent, PageItemComponent } from "./components/page.js";
 import { ImageComponent } from "./page/item/image.js";
 import { NoteComponent } from "./page/item/note.js";
 import { TodoComponent } from "./page/item/todo.js";
@@ -8,7 +8,7 @@ import { VideoComponent } from "./page/item/video.js";
 class App {
   private readonly page: Component & Composable;
   constructor(appRoot: HTMLElement) {
-    this.page = new PageComponent();
+    this.page = new PageComponent(PageItemComponent);
     this.page.attachTo(appRoot);
 
     const image = new ImageComponent(
