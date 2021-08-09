@@ -1,4 +1,5 @@
-import { PageComponent, PageItemComponent } from "./components/page.js";
+import { InputDialog } from "./components/dialog.js";
+import { PageComponent, PageItemComponent, } from "./components/page.js";
 import { ImageComponent } from "./page/item/image.js";
 import { NoteComponent } from "./page/item/note.js";
 import { TodoComponent } from "./page/item/todo.js";
@@ -15,6 +16,17 @@ class App {
         this.page.addChild(note);
         const todo = new TodoComponent("Todo Title", "Todo Item");
         this.page.addChild(todo);
+        const imageBtn = document.querySelector("#new-image");
+        imageBtn.addEventListener("click", () => {
+            const dialog = new InputDialog();
+            dialog.setOncloseListener(() => {
+                dialog.removeFrom(document.body);
+            });
+            dialog.setOnSubmitListener(() => {
+                dialog.removeFrom(document.body);
+            });
+            dialog.attachTo(document.body);
+        });
     }
 }
 new App(document.querySelector(".document"));
